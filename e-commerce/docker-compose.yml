@@ -38,6 +38,8 @@ services:
       - 27017:27017
     volumes:
       - mongo:/data
+    networks:
+      - microservices_net
 
   mongo-express:
     container_name: mongo-express
@@ -49,6 +51,8 @@ services:
     ports:
       - 8081:8081
     restart: unless-stopped
+    networks:
+      - microservices_net
 
   maildev:
     container_name: mail_dev_service
