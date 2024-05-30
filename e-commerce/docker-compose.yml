@@ -31,9 +31,6 @@ services:
   mongodb:
     container_name: mongodb_services
     image: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: 12345
     ports:
       - 27017:27017
     volumes:
@@ -43,8 +40,6 @@ services:
     container_name: mongo-express
     image: mongo-express
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: 12345
       ME_CONFIG_MONGODB_SERVER: mongodb
     ports:
       - 8081:8081
