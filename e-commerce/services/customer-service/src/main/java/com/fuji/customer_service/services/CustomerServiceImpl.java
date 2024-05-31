@@ -1,11 +1,15 @@
 package com.fuji.customer_service.services;
 
 import com.fuji.customer_service.dto.CustomerRequest;
+import com.fuji.customer_service.dto.CustomerResponse;
+import com.fuji.customer_service.entities.Customer;
+import com.fuji.customer_service.exceptions.CustomerNotFoundException;
 import com.fuji.customer_service.mapper.CustomerMapper;
 import com.fuji.customer_service.repositories.CustomerRepository;
 import com.fuji.customer_service.utils.Response;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +18,10 @@ import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
+
+import static java.lang.String.format;
 
 @Service
 @Transactional
@@ -54,7 +61,40 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public Response update(CustomerRequest request) {
-        return null;
+        var customer= customerRepository.findByEmail(request.email())
+                .orElseThrow(()-> new CustomerNotFoundException(
+                        format("Can't update customer:: No customer found with the ID:: %s", request.email()
+                        )
+                ));
+
+        mergerCustomer(customer, request);
+        customer.setLastUpdateDate(new Date());
+
+        customerRepository.save(customer);
+        log.info("customer updated successfully!");
+
+        return generateResponse(
+                HttpStatus.OK,
+                Map.of(
+                        "customer", customerMapper.mapToCustomerResponse(customer)
+                ),
+                "customer updated successfully!"
+        );
+    }
+
+    private void mergerCustomer(Customer customer, CustomerRequest request) {
+        if (StringUtils.isNotBlank(request.firstname())) {
+            customer.setFirstname(request.firstname());
+        }
+        if (StringUtils.isNotBlank(request.lastname())) {
+            customer.setLastname(request.lastname());
+        }
+        if (StringUtils.isNotBlank(request.email())) {
+            customer.setEmail(request.email());
+        }
+        if (!Objects.isNull(request.address())) {
+            customer.setAddress(request.address());
+        }
     }
 
     @Override
