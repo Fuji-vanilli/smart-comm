@@ -16,10 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.net.URI;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 import static java.lang.String.format;
 
@@ -99,12 +96,46 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public Response get(String customerId) {
-        return null;
+        var customer= customerRepository.findByEmail(customerId);
+        if (customer.isEmpty()) {
+            log.error("customer doesn't exist into the database");
+            return generateResponse(
+                    HttpStatus.BAD_REQUEST,
+                    null,
+                    "customer doesn't exist into the database"
+            );
+        }
+
+        log.info("customer finded successfully!");
+        return generateResponse(
+                HttpStatus.OK,
+                Map.of(
+                        "customer", customerMapper.mapToCustomerResponse(customer.get())
+                ),
+                "customer finded successfully!"
+        );
     }
 
     @Override
     public Response all() {
-        return null;
+        List<Customer> allCustomers = customerRepository.findAll();
+        if (allCustomers.isEmpty()) {
+            log.error("empty customer from database");
+            return generateResponse(
+                    HttpStatus.NO_CONTENT,
+                    null,
+                    "empty customer from database"
+            );
+        }
+        return generateResponse(
+                HttpStatus.OK,
+                Map.of(
+                        "customers", allCustomers.stream()
+                                .map(customerMapper::mapToCustomerResponse)
+                                .toList()
+                ),
+                "all customers finded successfully!"
+        );
     }
 
     @Override
