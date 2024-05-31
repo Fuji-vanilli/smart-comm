@@ -140,7 +140,23 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public Response delete(String customerId) {
-        return null;
+        var customer= customerRepository.findByEmail(customerId);
+        if (customer.isEmpty()) {
+            log.error("customer doesn't exist into the database, for deleting");
+            return generateResponse(
+                    HttpStatus.BAD_REQUEST,
+                    null,
+                    "customer doesn't exist into the database, for deleting"
+            );
+        }
+
+        customerRepository.deleteById(customerId);
+        log.info("customer deleted successfully");
+        return generateResponse(
+                HttpStatus.OK,
+                null,
+                "customer deleted successfully"
+        );
     }
     private Response generateResponse(HttpStatus status, Map<?, ?> data, String message) {
         return Response.builder()
