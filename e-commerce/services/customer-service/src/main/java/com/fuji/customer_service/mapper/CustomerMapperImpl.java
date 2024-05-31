@@ -25,7 +25,9 @@ public class CustomerMapperImpl implements CustomerMapper{
                 customer.getFirstname(),
                 customer.getLastname(),
                 customer.getEmail(),
-                customer.getAddress()
+                customer.getAddress(),
+                customer.getCreatedDate(),
+                customer.getLastUpdateDate()
         );
     }
 }

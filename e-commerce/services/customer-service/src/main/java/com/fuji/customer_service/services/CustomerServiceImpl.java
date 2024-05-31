@@ -12,7 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.net.URI;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -24,8 +26,30 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public Response add(CustomerRequest request) {
+        if (customerRepository.existsByEmail(request.email())) {
+            log.error("customer already exist into the database");
+            return generateResponse(
+                    HttpStatus.BAD_REQUEST,
+                    null,
+                    "customer already exist into the database"
+            );
+        }
 
-        return null;
+        var customer= customerMapper.mapToCustomer(request);
+        customer.setId(UUID.randomUUID().toString());
+        customer.setCreatedDate(new Date());
+        customer.setLastUpdateDate(new Date());
+
+        customerRepository.save(customer);
+        log.info("new customer added successfully!");
+
+        return generateResponse(
+                HttpStatus.OK,
+                Map.of(
+                        "customer", customerMapper.mapToCustomerResponse(customer)
+                ),
+                "new customer added successfully!"
+        );
     }
 
     @Override
@@ -47,11 +71,10 @@ public class CustomerServiceImpl implements CustomerService{
     public Response delete(String customerId) {
         return null;
     }
-    private Response generateResponse(HttpStatus status, URI location, Map<?, ?> data, String message) {
+    private Response generateResponse(HttpStatus status, Map<?, ?> data, String message) {
         return Response.builder()
                 .timeStamp(LocalDateTime.now())
                 .status(status)
-                .location(location)
                 .statusCode(status.value())
                 .data(data)
                 .message(message)
