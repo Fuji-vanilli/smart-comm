@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Getter @Setter
@@ -16,6 +17,11 @@ public class Product {
     private String description;
     private double availableQuantity;
     private BigDecimal price;
+    private String categoryId;
+    @Temporal(TemporalType.DATE)
+    private Date createDate;
+    @Temporal(TemporalType.DATE)
+    private Date lastUpdateDate;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
