@@ -1,0 +1,18 @@
+{
+  "timeStamp": "2024-06-01T15:39:33.7166809",
+  "status": "CREATED",
+  "statusCode": 201,
+  "data": {
+    "product": {
+      "id": "74956f71-f39c-44cd-b536-08ff42e0c18f",
+      "name": "iphone 7 plus",
+      "description": "apple product",
+      "quantity": 25.0,
+      "price": 250,
+      "category": null,
+      "createdDate": "2024-06-01T12:39:33.631+00:00",
+      "lastUpdateDate": "2024-06-01T12:39:33.631+00:00"
+    }
+  },
+  "message": "new Product created"
+}

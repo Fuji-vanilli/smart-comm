@@ -89,9 +89,7 @@ public class ProductServiceImpl implements ProductService{
         if (StringUtils.isNotBlank(request.description())) {
             product.setDescription(request.description());
         }
-        if (StringUtils.isNotBlank(request.categoryId())) {
-            product.setDescription(request.categoryId());
-        }
+
         if (request.price()!= null) {
             product.setPrice(request.price());
         }

@@ -17,7 +17,6 @@ public class Product {
     private String description;
     private double availableQuantity;
     private BigDecimal price;
-    private String categoryId;
     @Temporal(TemporalType.DATE)
     private Date createDate;
     @Temporal(TemporalType.DATE)

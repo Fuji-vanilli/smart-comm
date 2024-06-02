@@ -1,5 +1,6 @@
 package com.fuji.product_service.dto;
 
+import com.fuji.product_service.entities.Category;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
@@ -12,6 +13,6 @@ public record ProductRequest (
         double availableQuantity,
         @Positive(message = "price of product must be positive" )
         BigDecimal price,
-        @NotNull(message= "category id of the product is required!")
-        String categoryId
+        @NotNull(message= "category of the product is required!")
+        Category categoryId
 ) { }

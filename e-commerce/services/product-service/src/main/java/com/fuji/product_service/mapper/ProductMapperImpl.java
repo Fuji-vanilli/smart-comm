@@ -14,7 +14,6 @@ public class ProductMapperImpl implements ProductMapper{
                 .description(request.description())
                 .price(request.price())
                 .availableQuantity(request.availableQuantity())
-                .categoryId(request.categoryId())
                 .build();
     }
 

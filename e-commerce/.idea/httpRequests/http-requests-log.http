@@ -1,0 +1,56 @@
+POST http://localhost:7010/api/product/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 211
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "iphone 7 plus",
+  "description": "apple product",
+  "availableQuantity": 25,
+  "price": 250,
+  "category": {
+    "id": "125",
+    "name": "telephone",
+    "description": "technologie material"
+  }
+}
+
+<> 2024-06-01T174217.200.json
+
+###
+
+POST http://localhost:7010/api/product/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 211
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "iphone 7 plus",
+  "description": "apple product",
+  "availableQuantity": 25,
+  "price": 250,
+  "category": {
+    "id": "125",
+    "name": "telephone",
+    "description": "technologie material"
+  }
+}
+
+<> 2024-06-01T153933.200.json
+
+###
+
+POST http://localhost:7010/api/product/create
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2024-06-01T153530.400.json
+
+###
+

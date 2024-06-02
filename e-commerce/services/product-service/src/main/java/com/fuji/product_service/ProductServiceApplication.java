@@ -19,7 +19,7 @@ public class ProductServiceApplication {
 		SpringApplication.run(ProductServiceApplication.class, args);
 	}
 
-	@Bean
+	//@Bean
 	CommandLineRunner commandLineRunner(ProductRepository repository, CategoryRepository categoryRepository) {
 		return args -> {
 			Product product= Product.builder()

@@ -1,0 +1,7 @@
+{
+  "timeStamp": "2024-06-01T17:42:17.9167206",
+  "status": "BAD_REQUEST",
+  "statusCode": 400,
+  "data": null,
+  "message": "Product with name iphone 7 plus already exists"
+}
