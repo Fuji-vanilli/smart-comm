@@ -1,0 +1,6 @@
+{
+  "timestamp": "2024-06-02T06:48:27.951+00:00",
+  "status": 500,
+  "error": "Internal Server Error",
+  "path": "/api/product/create"
+}

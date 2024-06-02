@@ -13,6 +13,6 @@ public record ProductRequest (
         double availableQuantity,
         @Positive(message = "price of product must be positive" )
         BigDecimal price,
-        @NotNull(message= "category of the product is required!")
-        Category categoryId
+        @NotNull(message= "category id of the product is required!")
+        String categoryId
 ) { }

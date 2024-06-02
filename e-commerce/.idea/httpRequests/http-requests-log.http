@@ -1,3 +1,383 @@
+PATCH http://localhost:7010/api/product/purchase
+Accept: application/json
+Content-Type: application/json
+Content-Length: 204
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "request": [
+    {
+      "id": "eb43c9d9-70ac-43e0-8814-4917dd0651e7",
+      "quantity": 5"quantity": 5
+    },
+    {
+      "id": "c23b907f-442d-49a4-914e-64c9336eb672",
+      "quantity": 2
+    }
+  ]
+}
+
+<> 2024-06-02T155232.404.json
+
+###
+
+GET http://localhost:7010/api/category/get/bf4d5011-4265-4acc-a309-10d8fcabcbd0
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2024-06-02T154415.200.json
+
+###
+
+PATCH http://localhost:7010/api/product/purchase
+Accept: application/json
+Content-Length: 2
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{}
+
+<> 2024-06-02T154334.404.json
+
+###
+
+GET http://localhost:7010/api/category/get/bf4d5011-4265-4acc-a309-10d8fcabcbd0
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2024-06-02T154129.200.json
+
+###
+
+GET http://localhost:7010/api/category/get/bf4d5011-4265-4acc-a309-10d8fcabcbd0
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2024-06-02T143926.200.json
+
+###
+
+GET http://localhost:7010/api/category/get/bf4d5011-4265-4acc-a309-10d8fcabcbd0
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2024-06-02T125944.200.json
+
+###
+
+GET http://localhost:7010/api/category/get/bf4d5011-4265-4acc-a309-10d8fcabcbd0
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2024-06-02T125749.200.json
+
+###
+
+POST http://localhost:7010/api/product/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 166
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "Google Pixel 3XL",
+  "description": "Google product",
+  "availableQuantity": 10,
+  "price": 175,
+  "categoryId": "bf4d5011-4265-4acc-a309-10d8fcabcbd0"
+}
+
+<> 2024-06-02T095316.200.json
+
+###
+
+POST http://localhost:7010/api/product/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 166
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "Google Pixel 3XL",
+  "description": "Google product",
+  "availableQuantity": 10,
+  "price": 175,
+  "categoryId": "bf4d5011-4265-4acc-a309-10d8fcabcbd0"
+}
+
+<> 2024-06-02T095252.200.json
+
+###
+
+POST http://localhost:7010/api/product/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 166
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "Google Pixel 3XL",
+  "description": "Google product",
+  "availableQuantity": 10,
+  "price": 175,
+  "categoryId": "bf4d5011-4265-4acc-a309-10d8fcabcbd0"
+}
+
+<> 2024-06-02T094827.500.json
+
+###
+
+POST http://localhost:7010/api/product/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 242
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "Samsung S23",
+  "description": "apple product",
+  "availableQuantity": 15,
+  "price": 350,
+  "category": {
+    "id": "bf4d5011-4265-4acc-a309-10d8fcabcbd0",
+    "name": "Telephone",
+    "description": "technologie material"
+  }
+}
+
+<> 2024-06-02T093947.200.json
+
+###
+
+POST http://localhost:7010/api/product/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 242
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "Samsung S22",
+  "description": "apple product",
+  "availableQuantity": 15,
+  "price": 350,
+  "category": {
+    "id": "bf4d5011-4265-4acc-a309-10d8fcabcbd0",
+    "name": "Telephone",
+    "description": "technologie material"
+  }
+}
+
+<> 2024-06-02T093654.200.json
+
+###
+
+POST http://localhost:7010/api/category/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 62
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "Telephone",
+  "description": "telephone mobile"
+}
+
+<> 2024-06-02T093430.200.json
+
+###
+
+POST http://localhost:7010/api/category/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 62
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "Telephone",
+  "description": "telephone mobile"
+}
+
+###
+
+POST http://localhost:7010/api/category/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 53
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": 12,
+  "description": "telephone mobile"
+}
+
+###
+
+POST http://localhost:7010/api/category/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 62
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "Telephone",
+  "description": "telephone mobile"
+}
+
+###
+
+POST http://localhost:7010/api/category/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 62
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "Telephone",
+  "description": "telephone mobile"
+}
+
+###
+
+POST http://localhost:7010/api/category/creat
+Accept: application/json
+Content-Type: application/json
+Content-Length: 62
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "Telephone",
+  "description": "telephone mobile"
+}
+
+<> 2024-06-02T090015.404.json
+
+###
+
+POST http://localhost:7010/api/category/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 62
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "Telephone",
+  "description": "telephone mobile"
+}
+
+###
+
+POST http://localhost:7010/api/category/create
+Content-Type: application/json
+Content-Length: 62
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Telephone",
+  "description": "telephone mobile"
+}
+
+###
+
+POST http://localhost:7010/api/category/create
+Content-Type: application/json
+Content-Length: 62
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Telephone",
+  "description": "telephone mobile"
+}
+
+###
+
+POST http://localhost:7010/api/category/create
+Content-Type: application/json
+Content-Type: application/json
+Content-Length: 62
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "name": "Telephone",
+  "description": "telephone mobile"
+}
+
+###
+
+POST http://localhost:7010/api/product/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 211
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "iphone 8 plus",
+  "description": "apple product",
+  "availableQuantity": 25,
+  "price": 300,
+  "category": {
+    "id": "125",
+    "name": "telephone",
+    "description": "technologie material"
+  }
+}
+
+<> 2024-06-02T084512.200.json
+
+###
+
+POST http://localhost:7010/api/product/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 211
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "name": "iphone 7 plus",
+  "description": "apple product",
+  "availableQuantity": 25,
+  "price": 250,
+  "category": {
+    "id": "125",
+    "name": "telephone",
+    "description": "technologie material"
+  }
+}
+
+<> 2024-06-02T084500.200.json
+
+###
+
 POST http://localhost:7010/api/product/create
 Accept: application/json
 Content-Type: application/json

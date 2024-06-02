@@ -1,0 +1,25 @@
+{
+  "timeStamp": "2024-06-02T09:39:47.477201",
+  "status": "CREATED",
+  "statusCode": 201,
+  "data": {
+    "product": {
+      "id": "eb43c9d9-70ac-43e0-8814-4917dd0651e7",
+      "name": "Samsung S23",
+      "description": "apple product",
+      "quantity": 15.0,
+      "price": 350,
+      "category": {
+        "id": "bf4d5011-4265-4acc-a309-10d8fcabcbd0",
+        "name": "Telephone",
+        "description": "technologie material",
+        "products": null,
+        "createdDate": null,
+        "lastUpdatedDate": null
+      },
+      "createdDate": "2024-06-02T06:39:47.393+00:00",
+      "lastUpdateDate": "2024-06-02T06:39:47.393+00:00"
+    }
+  },
+  "message": "new Product created"
+}

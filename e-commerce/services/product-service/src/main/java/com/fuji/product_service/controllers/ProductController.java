@@ -1,9 +1,12 @@
 package com.fuji.product_service.controllers;
 
+import com.fuji.product_service.dto.ProductPurchaseRequest;
 import com.fuji.product_service.dto.ProductRequest;
 import com.fuji.product_service.utils.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 public interface ProductController {
     @PostMapping("create")
@@ -16,4 +19,6 @@ public interface ProductController {
     ResponseEntity<Response> getAll();
     @DeleteMapping("delete/{idProduct}")
     ResponseEntity<Response> delete(@PathVariable String idProduct);
+    @PatchMapping("purchase")
+    ResponseEntity<Response> purchase(@RequestBody List<ProductPurchaseRequest> request);
 }

@@ -1,0 +1,18 @@
+{
+  "timeStamp": "2024-06-02T08:45:12.3615479",
+  "status": "CREATED",
+  "statusCode": 201,
+  "data": {
+    "product": {
+      "id": "35c11b45-4f7f-4fa0-8954-1c9fd2ab6877",
+      "name": "iphone 8 plus",
+      "description": "apple product",
+      "quantity": 25.0,
+      "price": 300,
+      "category": null,
+      "createdDate": "2024-06-02T05:45:12.225+00:00",
+      "lastUpdateDate": "2024-06-02T05:45:12.225+00:00"
+    }
+  },
+  "message": "new Product created"
+}

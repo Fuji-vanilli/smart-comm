@@ -1,5 +1,6 @@
 package com.fuji.product_service.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,7 +16,8 @@ public class Category {
     private String id;
     private String name;
     private String description;
-    @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Product> products;
     @Temporal(TemporalType.DATE)
     private Date createdDate;

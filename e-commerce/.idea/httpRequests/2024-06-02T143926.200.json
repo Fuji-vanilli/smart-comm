@@ -1,0 +1,37 @@
+{
+  "timeStamp": "2024-06-02T14:39:26.4312264",
+  "status": "OK",
+  "statusCode": 200,
+  "data": {
+    "category": {
+      "id": "bf4d5011-4265-4acc-a309-10d8fcabcbd0",
+      "name": "Telephone",
+      "description": "telephone mobile",
+      "products": [
+        {
+          "id": "eb43c9d9-70ac-43e0-8814-4917dd0651e7",
+          "name": "Samsung S23",
+          "description": "apple product",
+          "availableQuantity": 15.0,
+          "price": 350.00,
+          "createDate": "2024-06-02",
+          "lastUpdateDate": "2024-06-02",
+          "categoryID": null
+        },
+        {
+          "id": "c23b907f-442d-49a4-914e-64c9336eb672",
+          "name": "Google Pixel 3XL",
+          "description": "Google product",
+          "availableQuantity": 10.0,
+          "price": 175.00,
+          "createDate": "2024-06-02",
+          "lastUpdateDate": "2024-06-02",
+          "categoryID": "bf4d5011-4265-4acc-a309-10d8fcabcbd0"
+        }
+      ],
+      "createdDate": "2024-06-02",
+      "lastUpdateDate": "2024-06-02"
+    }
+  },
+  "message": "product with the id: bf4d5011-4265-4acc-a309-10d8fcabcbd0 finding successfully"
+}

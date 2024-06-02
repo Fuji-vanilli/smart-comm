@@ -1,0 +1,16 @@
+{
+  "timeStamp": "2024-06-02T09:34:30.5151979",
+  "status": "CREATED",
+  "statusCode": 201,
+  "data": {
+    "product": {
+      "id": "bf4d5011-4265-4acc-a309-10d8fcabcbd0",
+      "name": "Telephone",
+      "description": "telephone mobile",
+      "products": null,
+      "createdDate": "2024-06-02T06:34:30.436+00:00",
+      "lastUpdateDate": "2024-06-02T06:34:30.436+00:00"
+    }
+  },
+  "message": "new Category created"
+}

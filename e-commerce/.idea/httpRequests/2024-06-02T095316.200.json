@@ -1,0 +1,7 @@
+{
+  "timeStamp": "2024-06-02T09:53:16.6162986",
+  "status": "BAD_REQUEST",
+  "statusCode": 400,
+  "data": null,
+  "message": "Product with name Google Pixel 3XL already exists"
+}

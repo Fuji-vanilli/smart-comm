@@ -1,9 +1,14 @@
 package com.fuji.product_service.services;
 
+import com.fuji.product_service.dto.ProductPurchaseRequest;
+import com.fuji.product_service.dto.ProductPurchaseResponse;
 import com.fuji.product_service.dto.ProductRequest;
 import com.fuji.product_service.entities.Product;
+import com.fuji.product_service.exception.CategoryNotFoundException;
 import com.fuji.product_service.exception.ProductNotFoundException;
+import com.fuji.product_service.exception.ProductPurchaseException;
 import com.fuji.product_service.mapper.ProductMapper;
+import com.fuji.product_service.mapper.ProductPurchaseMapper;
 import com.fuji.product_service.repositories.CategoryRepository;
 import com.fuji.product_service.repositories.ProductRepository;
 import com.fuji.product_service.utils.Response;
@@ -15,10 +20,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import static java.lang.String.format;
 
@@ -28,8 +30,9 @@ import static java.lang.String.format;
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService{
     private final ProductRepository productRepository;
-    private final ProductMapper productMapper;
     private final CategoryRepository categoryRepository;
+    private final ProductMapper productMapper;
+    private final ProductPurchaseMapper productPurchaseMapper;
 
     @Override
     public Response createProduct(ProductRequest request) {
@@ -43,9 +46,17 @@ public class ProductServiceImpl implements ProductService{
         }
 
         var product= productMapper.mapToProduct(request);
+        var category= categoryRepository.findById(request.categoryId())
+                .orElseThrow(
+                        ()-> new CategoryNotFoundException(
+                                format("Can't get category:: No category found with the ID:: %s", request.categoryId())
+                        )
+                );
+
         product.setId(UUID.randomUUID().toString());
         product.setCreateDate(new Date());
         product.setLastUpdateDate(new Date());
+        product.setCategory(category);
 
         productRepository.save(product);
         log.info("Created product {}", product);
@@ -162,6 +173,49 @@ public class ProductServiceImpl implements ProductService{
                 "product with the id: "+idProduct+" deleted successfully"
         );
     }
+
+    @Override
+    public Response purchaseProduct(List<ProductPurchaseRequest> requests) {
+        var idProducts= requests.stream()
+                .map(ProductPurchaseRequest::id)
+                .toList();
+
+        var storedProducts= productRepository.findByIdInOrderById(idProducts);
+        if (idProducts.size()!= storedProducts.size()) {
+            throw new ProductNotFoundException("One or more product doesn't exist into the database!");
+        }
+
+        var storesRequest= requests.stream()
+                .sorted(Comparator.comparing(ProductPurchaseRequest::id))
+                .toList();
+
+        List<ProductPurchaseResponse> productPurchaseResponses= new ArrayList<>();
+        for (int i = 0; i < storedProducts.size(); i++) {
+            var product= storedProducts.get(i);
+            var productRequest= storesRequest.get(i);
+
+            if (product.getAvailableQuantity()< productRequest.quantity()) {
+                throw new ProductPurchaseException(
+                        format("quantity not enough to purchase product ID:: %s", product.getId()));
+            }
+
+            double newQuantityAvailable= product.getAvailableQuantity()- productRequest.quantity();
+            product.setAvailableQuantity(newQuantityAvailable);
+            productRepository.save(product);
+
+            productPurchaseResponses.add(productPurchaseMapper.mapToProductPurchaseResponse(product, newQuantityAvailable));
+            log.info("product {} purchased successfully", product.getId());
+        }
+
+        return generateResponse(
+                HttpStatus.OK,
+                Map.of(
+                        "productPurchased", productPurchaseResponses
+                ),
+                "products purchased successfully!"
+        );
+    }
+
     private Response generateResponse(HttpStatus status, Map<?, ?> data, String message) {
         return Response.builder()
                 .timeStamp(LocalDateTime.now())

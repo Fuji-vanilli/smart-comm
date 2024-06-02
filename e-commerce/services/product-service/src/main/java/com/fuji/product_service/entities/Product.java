@@ -1,5 +1,6 @@
 package com.fuji.product_service.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,7 +22,9 @@ public class Product {
     private Date createDate;
     @Temporal(TemporalType.DATE)
     private Date lastUpdateDate;
+    private String categoryID;
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @JsonBackReference
     private Category category;
 }

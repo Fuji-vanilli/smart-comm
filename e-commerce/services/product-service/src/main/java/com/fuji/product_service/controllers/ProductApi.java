@@ -1,5 +1,6 @@
 package com.fuji.product_service.controllers;
 
+import com.fuji.product_service.dto.ProductPurchaseRequest;
 import com.fuji.product_service.dto.ProductRequest;
 import com.fuji.product_service.services.ProductService;
 import com.fuji.product_service.utils.Response;
@@ -7,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 import static com.fuji.product_service.utils.Root.APP_ROOT_PRODUCT;
 
@@ -38,5 +41,10 @@ public class ProductApi implements ProductController {
     @Override
     public ResponseEntity<Response> delete(String idProduct) {
         return ResponseEntity.ok(productService.delete(idProduct));
+    }
+
+    @Override
+    public ResponseEntity<Response> purchase(List<ProductPurchaseRequest> request) {
+        return ResponseEntity.ok(productService.purchaseProduct(request));
     }
 }
