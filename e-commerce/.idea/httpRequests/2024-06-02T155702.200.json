@@ -1,0 +1,24 @@
+{
+  "timeStamp": "2024-06-02T15:57:02.5294206",
+  "status": "OK",
+  "statusCode": 200,
+  "data": {
+    "productPurchased": [
+      {
+        "id": "c23b907f-442d-49a4-914e-64c9336eb672",
+        "name": "Google Pixel 3XL",
+        "description": "Google product",
+        "quantity": 8.0,
+        "price": 175.00
+      },
+      {
+        "id": "eb43c9d9-70ac-43e0-8814-4917dd0651e7",
+        "name": "Samsung S23",
+        "description": "apple product",
+        "quantity": 10.0,
+        "price": 350.00
+      }
+    ]
+  },
+  "message": "products purchased successfully!"
+}

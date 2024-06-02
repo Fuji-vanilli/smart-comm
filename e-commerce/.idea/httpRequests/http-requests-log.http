@@ -1,6 +1,52 @@
 PATCH http://localhost:7010/api/product/purchase
 Accept: application/json
 Content-Type: application/json
+Content-Length: 174
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+[
+    {
+      "id": "eb43c9d9-70ac-43e0-8814-4917dd0651e7",
+      "quantity": 5
+    },
+    {
+      "id": "c23b907f-442d-49a4-914e-64c9336eb672",
+      "quantity": 2
+    }
+  ]
+
+<> 2024-06-02T155702.200.json
+
+###
+
+PATCH http://localhost:7010/api/product/purchase
+Accept: application/json
+Content-Type: application/json
+Content-Length: 204
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "request": [
+    {
+      "id": "eb43c9d9-70ac-43e0-8814-4917dd0651e7",
+      "quantity": 5"quantity": 5
+    },
+    {
+      "id": "c23b907f-442d-49a4-914e-64c9336eb672",
+      "quantity": 2
+    }
+  ]
+}
+
+<> 2024-06-02T155440.400.json
+
+###
+
+PATCH http://localhost:7010/api/product/purchase
+Accept: application/json
+Content-Type: application/json
 Content-Length: 204
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
 Accept-Encoding: br, deflate, gzip, x-gzip
