@@ -9,9 +9,10 @@ eureka:
 spring:
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      username: root
-      password: 12345
-      database: customer-db
-      authentication-database: admin
+      uri: mongodb://localhost:27017/customer-db
+#      host: localhost
+#      port: 27017
+#      username: root
+#      password: 12345
+#      database: customer-db
+#      authentication-database: admin

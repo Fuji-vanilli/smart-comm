@@ -1,3 +1,61 @@
+POST http://localhost:7000/api/customer/add
+Accept: application/json
+Content-Type: application/json
+Content-Length: 218
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "firstname": "RAKOTOBE",
+  "lastname": "Georges",
+  "email": "rakotobe@georges.com",
+  "address": {
+    "street": "Lot NBD 25",
+    "city": "Antananarivo",
+    "houseNumber": "25444",
+    "postalCode": "105"
+  }
+
+}
+
+<> 2024-06-03T085338.500.json
+
+###
+
+POST http://localhost:7000/api/customer/create
+Accept: application/json
+Content-Type: application/json
+Content-Length: 218
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "firstname": "RAKOTOBE",
+  "lastname": "Georges",
+  "email": "rakotobe@georges.com",
+  "address": {
+    "street": "Lot NBD 25",
+    "city": "Antananarivo",
+    "houseNumber": "25444",
+    "postalCode": "105"
+  }
+
+}
+
+<> 2024-06-03T085320.404.json
+
+###
+
+GET http://localhost:7000/api/customer/all
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2024-06-03T084659.500.json
+
+###
+
 PATCH http://localhost:7010/api/product/purchase
 Accept: application/json
 Content-Type: application/json

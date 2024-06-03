@@ -23,7 +23,7 @@ spring:
       hibernate:
         format_sql: true
 
-webClient:
+web-client:
   config:
     customer-url: http://localhost:7000/api/customer
     product-url: http://localhost:7010/api/product
