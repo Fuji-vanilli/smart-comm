@@ -1,12 +1,11 @@
 package com.fuji.order_service.model;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
-public record Product (
+public record ProductPurchaseResponse (
+    String id,
     String name,
     String description,
     double quantity,
-    BigDecimal price,
-    Category category
+    BigDecimal price
 ) {}

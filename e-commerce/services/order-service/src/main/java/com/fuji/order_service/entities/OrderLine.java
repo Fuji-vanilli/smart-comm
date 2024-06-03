@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 @Setter
@@ -19,4 +21,5 @@ public class OrderLine {
     private Order order;
     private String productID;
     private double quantity;
+    private BigDecimal amount;
 }

@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
 @Configuration
 @RequiredArgsConstructor
 @Slf4j
-public class WebClientGetter {
+public class WebClientCustomer {
     private final WebClient.Builder webClient;
     private final WebClientProperties properties;
 

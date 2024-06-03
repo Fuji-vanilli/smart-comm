@@ -1,0 +1,23 @@
+{
+  "timeStamp": "2024-06-03T09:05:40.173607",
+  "status": "OK",
+  "statusCode": 200,
+  "data": {
+    "customer": {
+      "id": "7fbe2f4e-0725-4b53-aea6-9fc14d890560",
+      "firstname": "RAKOTOBE",
+      "lastname": "Georges",
+      "email": "rakotobe@georges.com",
+      "address": {
+        "street": "Lot NBD 25",
+        "city": "Antananarivo",
+        "country": null,
+        "houseNumber": "25444",
+        "postalCode": "105"
+      },
+      "createdDate": "2024-06-03T06:05:40.094+00:00",
+      "lastUpdateDate": "2024-06-03T06:05:40.094+00:00"
+    }
+  },
+  "message": "new customer added successfully!"
+}

@@ -2,6 +2,7 @@ package com.fuji.order_service.dto;
 
 import com.fuji.order_service.entities.OrderLine;
 import com.fuji.order_service.model.PaymentMethod;
+import com.fuji.order_service.model.ProductPurchaseRequest;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -18,6 +19,6 @@ public record OrderRequest(
         @NotNull(message = "payment method required!")
         PaymentMethod paymentMethod,
         @NotEmpty(message = "You should at least purchase one product")
-        List<PurchaseRequest> products
+        List<ProductPurchaseRequest> products
 ) {
 }
