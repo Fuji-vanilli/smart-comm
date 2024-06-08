@@ -4,6 +4,16 @@ User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
 Accept-Encoding: br, deflate, gzip, x-gzip
 content-length: 0
 
+<> 2024-06-08T074037.200.json
+
+###
+
+GET http://localhost:7000/api/customer/all
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.2
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
 <> 2024-06-03T145547.200.json
 
 ###
