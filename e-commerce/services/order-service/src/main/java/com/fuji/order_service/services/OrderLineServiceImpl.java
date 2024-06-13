@@ -2,8 +2,8 @@ package com.fuji.order_service.services;
 
 import com.fuji.order_service.dto.OrderLineRequest;
 import com.fuji.order_service.entities.OrderLine;
+import com.fuji.order_service.exception.OrderLineNotFoundException;
 import com.fuji.order_service.mapper.OrderLineMapper;
-import com.fuji.order_service.mapper.OrderMapper;
 import com.fuji.order_service.repositories.OrderLineRepository;
 import com.fuji.order_service.utils.Response;
 import jakarta.transaction.Transactional;
@@ -12,8 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -45,22 +45,89 @@ public class OrderLineServiceImpl implements OrderLineService {
 
     @Override
     public Response get(String idOrderLine) {
-        return null;
+        OrderLine orderLine = orderLineRepository.findById(idOrderLine)
+                .orElseThrow(() -> new OrderLineNotFoundException(
+                        String.format("Order line with id %s not found", idOrderLine)
+                ));
+
+        log.info("order line by id {} getted successfully!", idOrderLine);
+        return generateResponse(
+                HttpStatus.OK,
+                Map.of(
+                        "orderLine", orderLineMapper.mapToOrderLineResponse(orderLine)
+                ),
+                "order line getted successfully!"
+        );
     }
 
     @Override
     public Response getAllByOrderId(String orderId) {
-        return null;
+        List<OrderLine> allByOrderId = orderLineRepository.findAllByOrderId(orderId);
+
+        if (allByOrderId.isEmpty()) {
+            log.error("Order line with order id {} not found!", orderId);
+            return generateResponse(
+                    HttpStatus.BAD_REQUEST,
+                    null,
+                    "there is no order line with order id " + orderId
+            );
+        }
+
+        log.info("all order line with id {} getted successfully!", orderId);
+        return generateResponse(
+                HttpStatus.OK,
+                Map.of(
+                        "orderLines", allByOrderId.stream()
+                                .map(orderLineMapper::mapToOrderLineResponse)
+                                .toList()
+                ),
+                "all order line with id: "+orderId+" getted successfully!"
+        );
     }
 
     @Override
     public Response getAll() {
-        return null;
+        List<OrderLine> allOrder = orderLineRepository.findAll();
+
+        if (allOrder.isEmpty()) {
+            log.error("Order line is empty");
+            return generateResponse(
+                    HttpStatus.BAD_REQUEST,
+                    null,
+                    "there is no order line into the database "
+            );
+        }
+
+        log.info("all order line getted successfully!");
+        return generateResponse(
+                HttpStatus.OK,
+                Map.of(
+                        "orderLines", allOrder.stream()
+                                .map(orderLineMapper::mapToOrderLineResponse)
+                                .toList()
+                ),
+                "all order line getted successfully!"
+        );
     }
 
     @Override
     public Response delete(String idOrderLine) {
-        return null;
+        if (!orderLineRepository.existsById(idOrderLine)) {
+            log.error("orderLine with the id: {} does not exist!", idOrderLine);
+            return generateResponse(
+                    HttpStatus.BAD_REQUEST,
+                    null,
+                    "orderLine with the id: "+idOrderLine+" does not exist!"
+            );
+        }
+
+        orderLineRepository.deleteById(idOrderLine);
+        log.info("order line with id {} deleted successfully!", idOrderLine);
+        return generateResponse(
+                HttpStatus.OK,
+                null,
+                "order line with id: "+idOrderLine+" deleted successfully!"
+        );
     }
 
     private Response generateResponse(HttpStatus status, Map<?, ?> data, String message) {
