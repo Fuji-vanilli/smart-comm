@@ -66,13 +66,6 @@ services:
     networks:
       - microservices_net
 
-  maildev:
-    container_name: mail_dev_service
-    image: maildev/maildev
-    ports:
-      - 1080:1080
-      - 1025:1025
-
   kafka:
     container_name: kafka
     image: confluentinc/cp-kafka:latest
@@ -86,6 +79,15 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_ZOOKEEPER_CONNECT_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT, PLAINTEXT_HOUSE:PLAINTEXT
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+    networks:
+      - microservices_net
+
+  maildev:
+    container_name: mail_dev_service
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
 
 networks:
   microservices_net:

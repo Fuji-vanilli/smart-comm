@@ -3,6 +3,8 @@ package com.fuji.order_service.services;
 import com.fuji.order_service.dto.OrderLineRequest;
 import com.fuji.order_service.dto.OrderRequest;
 import com.fuji.order_service.entities.Order;
+import com.fuji.order_service.kafka.OrderConfirmation;
+import com.fuji.order_service.kafka.OrderProducer;
 import com.fuji.order_service.mapper.OrderMapper;
 import com.fuji.order_service.model.Customer;
 import com.fuji.order_service.model.ProductPurchaseRequest;
@@ -32,11 +34,12 @@ public class OrderServiceImpl implements OrderService {
     private final WebClientCustomer webClientCustomer;
     private final WebClientProduct webClientProduct;
     private final OrderLineService orderLineService;
+    private final OrderProducer orderProducer;
 
     @Override
     public Response create(OrderRequest request) {
         var customer= webClientCustomer.getCustomer(request.customerID());
-        List<ProductPurchaseResponse> productPurchaseResponses = webClientProduct.purchaseProduct(request.products());
+        List<ProductPurchaseResponse> productPurchased = webClientProduct.purchaseProduct(request.products());
 
         Order order = orderRepository.save(orderMapper.mapToOrder(request));
 
@@ -50,7 +53,24 @@ public class OrderServiceImpl implements OrderService {
             );
         }
 
-        return null;
+        orderProducer.sendOrderConfirmation(
+                new OrderConfirmation(
+                        request.reference(),
+                        request.amount(),
+                        request.paymentMethod(),
+                        customer,
+                        productPurchased
+                )
+        );
+
+        log.info("order created successfully");
+        return generateResponse(
+                HttpStatus.OK,
+                Map.of(
+                        "order", orderMapper.mapToOrderResponse(order)
+                ),
+                "order created successfully"
+        );
     }
 
     @Override
