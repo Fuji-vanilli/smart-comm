@@ -23,6 +23,17 @@ spring:
       hibernate:
         format_sql: true
 
+#kafka config
+
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+      properties:
+        spring.json.type.mapping: orderConfirmation:com.fuji.order-service
+
 web-client:
   config:
     customer-url: http://localhost:7000/api/customer
