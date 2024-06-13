@@ -49,6 +49,11 @@ public class OrderLineServiceImpl implements OrderLineService {
     }
 
     @Override
+    public Response getAllByOrderId(String orderId) {
+        return null;
+    }
+
+    @Override
     public Response getAll() {
         return null;
     }

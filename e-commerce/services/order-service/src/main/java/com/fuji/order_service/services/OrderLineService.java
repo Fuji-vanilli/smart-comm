@@ -8,6 +8,7 @@ public interface OrderLineService {
     Response create(OrderLineRequest request);
     Response update(OrderLineRequest request);
     Response get(String idOrderLine);
+    Response getAllByOrderId(String orderId);
     Response getAll();
     Response delete(String idOrderLine);
 }

@@ -17,6 +17,8 @@ public interface OrderLineController {
     );
     @GetMapping("get/{idOrderLine}")
     ResponseEntity<Response> get(@PathVariable String idOrderLine);
+    @GetMapping("getAllByOrderId/{orderID}")
+    ResponseEntity<Response> getAllByOrderId(@PathVariable String orderID);
     @GetMapping("all")
     ResponseEntity<Response> getAll();
     @GetMapping("delete/{idOrderLine}")

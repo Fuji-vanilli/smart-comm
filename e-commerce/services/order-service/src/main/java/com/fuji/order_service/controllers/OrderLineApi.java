@@ -31,6 +31,11 @@ public class OrderLineApi implements OrderLineController{
     }
 
     @Override
+    public ResponseEntity<Response> getAllByOrderId(String orderID) {
+        return ResponseEntity.ok(orderLineService.getAllByOrderId(orderID));
+    }
+
+    @Override
     public ResponseEntity<Response> getAll() {
         return ResponseEntity.ok(orderLineService.getAll());
     }
