@@ -87,9 +87,9 @@ public class OrderLineServiceImpl implements OrderLineService {
 
     @Override
     public Response getAll() {
-        List<OrderLine> allOrder = orderLineRepository.findAll();
+        List<OrderLine> orderLines = orderLineRepository.findAll();
 
-        if (allOrder.isEmpty()) {
+        if (orderLines.isEmpty()) {
             log.error("Order line is empty");
             return generateResponse(
                     HttpStatus.BAD_REQUEST,
@@ -102,7 +102,7 @@ public class OrderLineServiceImpl implements OrderLineService {
         return generateResponse(
                 HttpStatus.OK,
                 Map.of(
-                        "orderLines", allOrder.stream()
+                        "orderLines", orderLines.stream()
                                 .map(orderLineMapper::mapToOrderLineResponse)
                                 .toList()
                 ),
