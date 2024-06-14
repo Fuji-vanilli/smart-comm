@@ -2,6 +2,7 @@ package com.fuji.order_service.services;
 
 import com.fuji.order_service.dto.OrderLineRequest;
 import com.fuji.order_service.dto.OrderRequest;
+import com.fuji.order_service.dto.PaymentRequest;
 import com.fuji.order_service.entities.Order;
 import com.fuji.order_service.entities.OrderLine;
 import com.fuji.order_service.exception.OrderLineNotFoundException;
@@ -14,6 +15,7 @@ import com.fuji.order_service.model.ProductPurchaseResponse;
 import com.fuji.order_service.repositories.OrderRepository;
 import com.fuji.order_service.utils.Response;
 import com.fuji.order_service.webClient.WebClientCustomer;
+import com.fuji.order_service.webClient.WebClientPayment;
 import com.fuji.order_service.webClient.WebClientProduct;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +37,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderMapper orderMapper;
     private final WebClientCustomer webClientCustomer;
     private final WebClientProduct webClientProduct;
+    private final WebClientPayment webClientPayment;
     private final OrderLineService orderLineService;
     private final OrderProducer orderProducer;
 
@@ -64,6 +67,13 @@ public class OrderServiceImpl implements OrderService {
                         productPurchased
                 )
         );
+
+        webClientPayment.requestOrderPayment(new PaymentRequest(
+                order.getReference(),
+                order.getTotalAmount(),
+                order.getPaymentMethod(),
+                order.getCustomerId()
+        ));
 
         log.info("order created successfully");
         return generateResponse(

@@ -11,7 +11,11 @@ import com.fuji.payment_service.webClient.WebClientCustomer;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.Map;
 
 
 @Service
@@ -39,7 +43,13 @@ public class PaymentServiceImpl implements PaymentService{
         ));
 
 
-        return null;
+        return generateResponse(
+                HttpStatus.CREATED,
+                Map.of(
+                        "payment", paymentMapper.mapToPaymentResponse(payment)
+                ),
+                "payment created successfully"
+        );
     }
 
     @Override
@@ -60,5 +70,15 @@ public class PaymentServiceImpl implements PaymentService{
     @Override
     public Response delete(String paymentID) {
         return null;
+    }
+
+    private Response generateResponse(HttpStatus status, Map<?, ?> data, String message) {
+        return Response.builder()
+                .timeStamp(LocalDateTime.now())
+                .status(status)
+                .statusCode(status.value())
+                .data(data)
+                .message(message)
+                .build();
     }
 }
