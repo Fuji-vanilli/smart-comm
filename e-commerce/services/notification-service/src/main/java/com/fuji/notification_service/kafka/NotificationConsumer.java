@@ -22,7 +22,7 @@ public class NotificationConsumer {
     private final NotificationRepository notificationRepository;
 
     @KafkaListener(topics = "payment-topic")
-    public void consumePaymentNotification(PaymentConfirmation paymentConfirmation) {
+    public void consumePaymentConfirmationNotification(PaymentConfirmation paymentConfirmation) {
         log.info(format("Consume message from the payment-topic Topic ::%s", paymentConfirmation));
 
         notificationRepository.save(
@@ -35,7 +35,7 @@ public class NotificationConsumer {
     }
 
     @KafkaListener(topics = "order-topic")
-    public void consumerOrderConfirmation(OrderConfirmation orderConfirmation) {
+    public void consumerOrderConfirmationNotification(OrderConfirmation orderConfirmation) {
         log.info(format("Consume message from the order-topic Topic ::%s", orderConfirmation));
 
         notificationRepository.save(
