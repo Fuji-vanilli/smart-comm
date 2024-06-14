@@ -7,7 +7,7 @@ import java.util.Date;
 
 public record PaymentResponse(
         String id,
-        String orderID,
+        String orderReference,
         BigDecimal amount,
         PaymentMethod paymentMethod,
         Date createdDate,

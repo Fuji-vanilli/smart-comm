@@ -14,7 +14,8 @@ public class PaymentMapperImpl implements PaymentMapper {
         return Payment.builder()
                 .amount(request.amount())
                 .paymentMethod(request.paymentMethod())
-                .orderID(request.orderID())
+                .orderReference(request.orderReference())
+                .customerID(request.customerID())
                 .build();
     }
 
@@ -22,7 +23,7 @@ public class PaymentMapperImpl implements PaymentMapper {
     public PaymentResponse mapToPaymentResponse(Payment payment) {
         return new PaymentResponse(
                 payment.getId(),
-                payment.getOrderID(),
+                payment.getOrderReference(),
                 payment.getAmount(),
                 payment.getPaymentMethod(),
                 payment.getCreatedDate(),

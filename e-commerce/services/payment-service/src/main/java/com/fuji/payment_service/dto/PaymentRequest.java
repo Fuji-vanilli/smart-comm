@@ -5,8 +5,9 @@ import com.fuji.payment_service.entity.PaymentMethod;
 import java.math.BigDecimal;
 
 public record PaymentRequest(
-        String orderID,
+        String orderReference,
         BigDecimal amount,
-        PaymentMethod paymentMethod
+        PaymentMethod paymentMethod,
+        String customerID
 ) {
 }

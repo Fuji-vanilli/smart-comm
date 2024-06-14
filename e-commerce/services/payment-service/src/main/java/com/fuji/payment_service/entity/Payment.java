@@ -2,6 +2,7 @@ package com.fuji.payment_service.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -21,7 +22,9 @@ public class Payment {
     private BigDecimal amount;
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
-    private String orderID;
+    @NotNull(message = "customer id is required!")
+    private String customerID;
+    private String orderReference;
     @CreatedDate
     @Column(updatable = false, nullable = false)
     private Date createdDate;
