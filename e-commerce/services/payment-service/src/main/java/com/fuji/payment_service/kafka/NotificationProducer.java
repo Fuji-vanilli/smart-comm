@@ -1,4 +1,4 @@
-package com.fuji.payment_service.notification;
+package com.fuji.payment_service.kafka;
 
 
 import com.fuji.payment_service.dto.PaymentNotificationRequest;

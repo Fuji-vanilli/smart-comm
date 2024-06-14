@@ -1,4 +1,4 @@
-package com.fuji.payment_service.config;
+package com.fuji.payment_service.kafka;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;

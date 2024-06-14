@@ -2,9 +2,8 @@ package com.fuji.payment_service.services;
 
 import com.fuji.payment_service.dto.PaymentNotificationRequest;
 import com.fuji.payment_service.dto.PaymentRequest;
-import com.fuji.payment_service.entity.Payment;
 import com.fuji.payment_service.mapper.PaymentMapper;
-import com.fuji.payment_service.notification.NotificationProducer;
+import com.fuji.payment_service.kafka.NotificationProducer;
 import com.fuji.payment_service.repository.PaymentRepository;
 import com.fuji.payment_service.utils.Response;
 import com.fuji.payment_service.webClient.WebClientCustomer;
